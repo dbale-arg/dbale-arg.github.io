@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego Bale — Blockchain Protocol Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c10;
+    --bg2: #0f1118;
+    --bg3: #141720;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(99,179,237,0.35);
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --accent: #63b3ed;
+    --accent2: #4fd1c5;
+    --accent-dim: rgba(99,179,237,0.12);
+    --accent2-dim: rgba(79,209,197,0.12);
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #90cdf4; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.5rem;
+    background: rgba(10,12,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 2.5rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-inner { max-width: 780px; }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+  .h1-dim { color: var(--muted); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0c10;
+    border: 1px solid transparent;
+  }
+  .btn-primary:hover { background: #90cdf4; color: #0a0c10; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+  /* GRID STATS */
+  .stats-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat {
+    padding: 0 2rem;
+    border-right: 1px solid var(--border);
+  }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .exp-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg2);
+    font-size: 0.82rem;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .exp-pill:hover {
+    border-color: var(--border-accent);
+    color: var(--text);
+    background: var(--accent-dim);
+  }
+  .exp-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .exp-dot.teal { background: var(--accent2); }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+  .project-card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg3);
+  }
+  .project-year {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding-top: 0.2rem;
+    white-space: nowrap;
+  }
+  .project-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .project-role {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-family: var(--mono);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-size: 0.72rem;
+    font-family: var(--mono);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .tag-blue {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(99,179,237,0.2);
+  }
+  .tag-teal {
+    background: var(--accent2-dim);
+    color: var(--accent2);
+    border: 1px solid rgba(79,209,197,0.2);
+  }
+  .tag-gray {
+    background: rgba(255,255,255,0.04);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-family: var(--mono);
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .status-live {
+    background: rgba(79,209,197,0.1);
+    color: var(--accent2);
+    border: 1px solid rgba(79,209,197,0.25);
+  }
+  .status-live::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .status-mainnet {
+    background: rgba(99,179,237,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(99,179,237,0.25);
+  }
+  .status-mainnet::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* SOLHINT FEATURE */
+  .solhint-card {
+    background: linear-gradient(135deg, #0f1820 0%, #0a1520 100%);
+    border: 1px solid rgba(99,179,237,0.25);
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .solhint-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .solhint-sub {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    letter-spacing: 0.06em;
+  }
+  .solhint-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .solhint-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .metric-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  .metric-val {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 0.2rem;
+  }
+  .metric-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .skill-group-title {
+    font-size: 0.72rem;
+    font-family: var(--mono);
+    color: var(--accent2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .skill-list li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .skill-list li::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--border-accent);
+    flex-shrink: 0;
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 2.5rem; }
+  .tl-dot {
+    position: absolute;
+    left: -2rem;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateX(-3px);
+    border: 2px solid var(--bg);
+  }
+  .tl-period {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.25rem;
+  }
+  .tl-company {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 0.15rem;
+  }
+  .tl-role {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-family: var(--mono);
+    margin-bottom: 0.5rem;
+  }
+  .tl-desc {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-tagline {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .contact-sub {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 0.87rem;
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--border-accent);
+    color: var(--text);
+    background: var(--accent-dim);
+  }
+  .contact-link-icon {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    min-width: 60px;
+    letter-spacing: 0.06em;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* CODE BLOCK DECORATION */
+  .code-accent {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding: 0.3rem 0.7rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 5rem 1.25rem 3rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 2rem 1.25rem; }
+    .stat { padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:nth-child(odd) { border-right: 1px solid var(--border); }
+    .stat:nth-last-child(-n+2) { border-bottom: none; }
+    section { padding: 4rem 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-year { display: none; }
+    .project-status { justify-self: start; }
+    .solhint-card { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">dbale.eth</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#solhint">Solhint</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Available for protocol work</div>
+    <h1>
+      Diego Bale<br>
+      <span class="h1-dim">Protocol Architect</span>
+    </h1>
+    <p class="hero-sub">
+      Senior blockchain engineer with 25+ years in software and 7+ years building production-grade Web3 protocols — from institutional tokenization platforms to ERC-4626 vaults, cross-chain integrations, and the tooling that keeps Solidity codebases clean.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/dbale-arg" target="_blank" class="btn btn-primary">GitHub</a>
+      <a href="https://linkedin.com/in/diegobale" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/protofire/solhint" target="_blank" class="btn btn-ghost">Solhint ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">25<span>+</span></div>
+    <div class="stat-label">Years in software</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">7<span>+</span></div>
+    <div class="stat-label">Years in Web3</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10<span>+</span></div>
+    <div class="stat-label">Protocols shipped</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">1</div>
+    <div class="stat-label">Open-source tool maintained</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">// about</div>
+  <h2>Architecting DeFi from the ground up</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I design and build blockchain protocol architectures for production — not proofs of concept. My work spans <strong>institutional tokenization platforms</strong>, <strong>ERC-4626 staking vaults</strong>, oracle and data-feed systems, AMM integrations, governance contracts, and cross-chain bridges.
+      </p>
+      <p>
+        I lead end-to-end delivery: translating ambiguous requirements into contract architecture, defining edge cases and protocol invariants, implementing with Solidity and Foundry/Hardhat, writing exhaustive fork tests, and staying accountable post-deployment. I use AI tools (Claude Code, Codex) as a design partner during architecture decisions — not to replace rigor, but to stress-test trade-offs before touching Solidity.
+      </p>
+      <p>
+        On the open-source side, I'm the official maintainer of <strong>Solhint</strong>, one of the most widely adopted Solidity linters. I drive releases, rule design, bug triage, and developer experience improvements across the ecosystem.
+      </p>
+      <p style="color: var(--muted); font-size: 0.85rem;">Buenos Aires, Argentina (GMT-3) · Spanish native · English fluent</p>
+    </div>
+    <div>
+      <div class="expertise-grid">
+        <div class="exp-pill"><span class="exp-dot"></span>ERC-4626 Vaults</div>
+        <div class="exp-pill"><span class="exp-dot"></span>Tokenization Platforms</div>
+        <div class="exp-pill"><span class="exp-dot teal"></span>Chainlink CCIP</div>
+        <div class="exp-pill"><span class="exp-dot teal"></span>Cross-chain Bridges</div>
+        <div class="exp-pill"><span class="exp-dot"></span>Oracle / Data Feeds</div>
+        <div class="exp-pill"><span class="exp-dot"></span>Upgradeable Proxies</div>
+        <div class="exp-pill"><span class="exp-dot teal"></span>AMM Integrations</div>
+        <div class="exp-pill"><span class="exp-dot teal"></span>Governance / DAO</div>
+        <div class="exp-pill"><span class="exp-dot"></span>Foundry / Hardhat</div>
+        <div class="exp-pill"><span class="exp-dot"></span>OpenZeppelin</div>
+        <div class="exp-pill"><span class="exp-dot teal"></span>Subgraphs / Indexers</div>
+        <div class="exp-pill"><span class="exp-dot teal"></span>Static Analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLHINT -->
+<section id="solhint" style="padding-top: 0;">
+  <div class="section-tag">// open source</div>
+  <h2>Solhint — official maintainer</h2>
+  <div class="solhint-card">
+    <div>
+      <div class="solhint-title">Solhint</div>
+      <div class="solhint-sub">github.com/protofire/solhint</div>
+      <p class="solhint-desc">
+        The most widely adopted Solidity linter in the ecosystem. Used by smart contract teams at protocols large and small to enforce code quality, security patterns, and style rules. I lead releases, design new lint rules, triage bugs, review PRs, support plugin authors, and drive developer experience improvements. I also contributed to grant-related technical proposals linking static analysis with modern Solidity workflows.
+      </p>
+      <div class="project-tags" style="margin-top: 1.25rem;">
+        <span class="tag tag-blue">Static Analysis</span>
+        <span class="tag tag-blue">Solidity</span>
+        <span class="tag tag-blue">Node.js</span>
+        <span class="tag tag-gray">Technical Lead</span>
+        <span class="tag tag-gray">Open Source</span>
+      </div>
+    </div>
+    <div class="solhint-metrics">
+      <div class="metric-box">
+        <div class="metric-val">∞</div>
+        <div class="metric-label">Teams using it</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">2023—</div>
+        <div class="metric-label">Maintainer since</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">100+</div>
+        <div class="metric-label">Lint rules</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">Active</div>
+        <div class="metric-label">Development</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding-top: 0;">
+  <div class="section-tag">// projects</div>
+  <h2>Protocol work</h2>
+  <div class="projects-list">
+
+    <div class="project-card">
+      <div class="project-year">2026</div>
+      <div>
+        <div class="project-name">DigiBlock</div>
+        <div class="project-role">Blockchain Architect & Protocol Designer</div>
+        <p class="project-desc">
+          Designing the blockchain layer for an institutional-grade tokenization platform. Responsible for ERC-20 security-token architecture, multi-chain settlement infrastructure, and defining the upgrade path toward institutional compliance standards. Includes cross-chain deployment strategy and supporting protocol infrastructure.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Tokenization</span>
+          <span class="tag tag-blue">ERC-20</span>
+          <span class="tag tag-teal">Multi-chain</span>
+          <span class="tag tag-gray">Architecture</span>
+          <span class="tag tag-gray">Institutional</span>
+        </div>
+      </div>
+      <div class="project-status status-live">Current</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2025–26</div>
+      <div>
+        <div class="project-name">Mantra Protocol</div>
+        <div class="project-role">Smart Contract Architect & Developer</div>
+        <p class="project-desc">
+          Designed and implemented core protocol components: Vault, Node Registry, and Withdrawal Manager. Integrated MANTRA staking precompiles with native wrapping and unwrapping flows. Deployed to mainnet and testnet with extensive TypeScript/Hardhat integration tests.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">ERC-4626 Vault</span>
+          <span class="tag tag-blue">Staking Precompiles</span>
+          <span class="tag tag-teal">Withdrawal Manager</span>
+          <span class="tag tag-gray">Hardhat</span>
+          <span class="tag tag-gray">TypeScript</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Mainnet</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2025</div>
+      <div>
+        <div class="project-name">Axon Protocol</div>
+        <div class="project-role">Smart Contract Architect & Lead Developer</div>
+        <p class="project-desc">
+          Designed the full protocol contract suite and associated subgraphs. Led extensive Hardhat and TypeScript testing covering protocol behavior and integration flows end to end.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Protocol Design</span>
+          <span class="tag tag-teal">Subgraphs</span>
+          <span class="tag tag-gray">The Graph</span>
+          <span class="tag tag-gray">Integration Testing</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Mainnet</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2025</div>
+      <div>
+        <div class="project-name">DNA Protocol</div>
+        <div class="project-role">Smart Contract Developer</div>
+        <p class="project-desc">
+          Forked and adapted the Venus oracle module for protocol-specific requirements. Implemented custom oracle logic and exhaustive Hardhat/TypeScript testing covering edge cases and failure modes.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Oracle</span>
+          <span class="tag tag-blue">Venus Fork</span>
+          <span class="tag tag-gray">Hardhat</span>
+          <span class="tag tag-gray">Edge Cases</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Mainnet</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2024</div>
+      <div>
+        <div class="project-name">Lys Protocol</div>
+        <div class="project-role">Lead Developer</div>
+        <p class="project-desc">
+          Designed protocol architecture and implemented smart contracts with comprehensive testing across all critical paths.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Protocol Architecture</span>
+          <span class="tag tag-gray">Solidity</span>
+          <span class="tag tag-gray">Full Coverage Testing</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Mainnet</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2024</div>
+      <div>
+        <div class="project-name">Nuon Protocol</div>
+        <div class="project-role">Smart Contract Developer</div>
+        <p class="project-desc">
+          Designed the Redistributor contract and integrated permit on protocol tokens. Extensive Foundry testing and full deployment to mainnet and testnet.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">EIP-2612 Permit</span>
+          <span class="tag tag-teal">Foundry</span>
+          <span class="tag tag-gray">Redistribution Logic</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Mainnet</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2022–23</div>
+      <div>
+        <div class="project-name">Kryptomon — Chainlink CCIP</div>
+        <div class="project-role">Smart Contract Developer</div>
+        <p class="project-desc">
+          Designed and implemented sender and receiver contracts for cross-chain asset bridging via Chainlink CCIP. Covered NFTs, ERC-1155, and ERC-20 assets across multiple chains.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Chainlink CCIP</span>
+          <span class="tag tag-blue">Cross-chain</span>
+          <span class="tag tag-teal">ERC-1155</span>
+          <span class="tag tag-teal">NFT Bridging</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Mainnet</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2022–23</div>
+      <div>
+        <div class="project-name">Roe Finance</div>
+        <div class="project-role">Smart Contract Auditor</div>
+        <p class="project-desc">
+          Performed DeFi smart contract security audits: code review, dependency assessment, standards compliance checks, gas evaluation, and written reporting for the protocol team.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Security Audit</span>
+          <span class="tag tag-gray">DeFi</span>
+          <span class="tag tag-gray">Gas Analysis</span>
+          <span class="tag tag-gray">Standards Review</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Completed</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-year">2021–22</div>
+      <div>
+        <div class="project-name">Swarm</div>
+        <div class="project-role">Smart Contract Designer, Developer & Web3 Integrator</div>
+        <p class="project-desc">
+          Full lifecycle: requirements analysis, smart contract architecture, implementation, deployment, and documentation. Used OpenZeppelin, Chainlink, NFT standards, Gnosis Safe, multisig patterns, and automated JS/TS testing.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">OpenZeppelin</span>
+          <span class="tag tag-blue">Chainlink</span>
+          <span class="tag tag-teal">Gnosis Safe</span>
+          <span class="tag tag-teal">Multisig</span>
+          <span class="tag tag-gray">NFT</span>
+        </div>
+      </div>
+      <div class="project-status status-mainnet">Mainnet</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="padding-top: 0;">
+  <div class="section-tag">// skills</div>
+  <h2>Technical stack</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Protocol Architecture</div>
+      <ul class="skill-list">
+        <li>ERC-4626 Vaults & Withdrawal Flows</li>
+        <li>Tokenization Platforms</li>
+        <li>Oracle / Data Feed Systems</li>
+        <li>AMM Integrations (Uniswap, Balancer)</li>
+        <li>Governance & DAO Voting</li>
+        <li>Upgradeable Proxies (UUPS / Transparent / Beacon)</li>
+        <li>Escrow & Multisig Treasury</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Smart Contract Engineering</div>
+      <ul class="skill-list">
+        <li>Solidity (advanced)</li>
+        <li>OpenZeppelin</li>
+        <li>Foundry (fork testing, invariants)</li>
+        <li>Hardhat + TypeScript</li>
+        <li>Ethers.js</li>
+        <li>CI Workflows & Deployment Scripts</li>
+        <li>Subgraphs / The Graph</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Ecosystem & Cross-chain</div>
+      <ul class="skill-list">
+        <li>Chainlink (CCIP, Oracles)</li>
+        <li>EtherFi / Lido</li>
+        <li>Frax / Uniswap / Balancer</li>
+        <li>Gnosis Safe</li>
+        <li>Solhint (maintainer)</li>
+        <li>Static Analysis & Custom Lint Rules</li>
+        <li>Rust / Anchor (Solana, exposure)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+<section style="padding-top: 0;">
+  <div class="section-tag">// experience</div>
+  <h2>Career timeline</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2021 — Present</div>
+      <div class="tl-company">Protofire</div>
+      <div class="tl-role">Blockchain Protocol Architect · Solhint Maintainer</div>
+      <div class="tl-desc">Multi-project environment across 10+ protocols. Simultaneously lead Solhint as official maintainer while architecting and delivering production smart contract systems for DeFi, RWA, and NFT protocols.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2020 — 2021</div>
+      <div class="tl-company">Atix Labs (now Globant)</div>
+      <div class="tl-role">Blockchain Developer</div>
+      <div class="tl-desc">Built foundational blockchain skills contributing to Hitcoin, Sovryn, Gnosis, IOHK, and Briken. Multi-project environment covering smart contract development, testing, and integration.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2019 — 2020</div>
+      <div class="tl-company">Southworks (USA — Argentina)</div>
+      <div class="tl-role">Node.js Developer</div>
+      <div class="tl-desc">Designed and developed backend services for 7-Eleven's promotions system. RESTful APIs in Node.js, Jest testing, MongoDB. Distributed team, enterprise delivery standards.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2007 — 2019</div>
+      <div class="tl-company">Lektros — Agriculture Management</div>
+      <div class="tl-role">Head of Technology · Founder</div>
+      <div class="tl-desc">Founded and led development of a platform deployed across 25+ large agricultural companies (packing plants, fruit, cotton, sugar cane, wine, oil). Full ownership of architecture, mobile solutions (Android, Windows Mobile), and customer-facing technical support.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top: 0; padding-bottom: 4rem;">
+  <div class="section-tag">// contact</div>
+  <div class="contact-grid">
+    <div>
+      <h2 style="margin-bottom: 1rem;">Let's build something production-grade.</h2>
+      <p class="contact-sub">
+        Open to protocol architecture work, smart contract development, technical audits, and Solhint integrations. GMT-3, async-friendly, English and Spanish.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:diego.bale.arg@gmail.com" class="contact-link">
+        <span class="contact-link-icon">Email</span>
+        diego.bale.arg@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/diegobale" target="_blank" class="contact-link">
+        <span class="contact-link-icon">LinkedIn</span>
+        linkedin.com/in/diegobale
+      </a>
+      <a href="https://github.com/dbale-arg" target="_blank" class="contact-link">
+        <span class="contact-link-icon">GitHub</span>
+        github.com/dbale-arg
+      </a>
+      <a href="https://github.com/protofire/solhint" target="_blank" class="contact-link">
+        <span class="contact-link-icon">Solhint</span>
+        github.com/protofire/solhint
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2026 Diego Bale · Buenos Aires, Argentina</div>
+  <div class="footer-copy">Blockchain Protocol Architect · Solhint Maintainer</div>
+</footer>
+
+</body>
+</html>
