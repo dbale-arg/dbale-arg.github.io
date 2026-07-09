@@ -422,6 +422,28 @@
     letter-spacing: 0.08em;
   }
 
+  /* AUTHORED RULES */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .rule-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg2);
+    transition: all 0.2s;
+  }
+  .rule-link:hover { border-color: var(--border-accent); background: var(--accent-dim); }
+  .rule-name { font-size: 0.82rem; color: var(--text); }
+  .rule-pr { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); flex-shrink: 0; }
+  @media (max-width: 768px) { .rules-grid { grid-template-columns: 1fr; } }
+
   /* SKILLS */
   .skills-grid {
     display: grid;
@@ -620,10 +642,10 @@
 <nav>
   <div class="nav-logo">dbale-arg</div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#solhint">Solhint</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#case-study">Case Study</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -631,7 +653,7 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">Senior Blockchain Engineer - Protocol Architect</div>
+    <div class="hero-tag">Blockchain Protocol Architect · Smart Contract Developer · Solhint Maintainer</div>
     <h1>
       Diego Bale<br>
       <span class="h1-dim">Protocol Architect</span>
@@ -650,43 +672,100 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-num">25<span>+</span></div>
-    <div class="stat-label">Years in software</div>
-  </div>
-  <div class="stat">
     <div class="stat-num">7<span>+</span></div>
-    <div class="stat-label">Years in Web3</div>
+    <div class="stat-label">Years building Web3 protocols</div>
   </div>
   <div class="stat">
     <div class="stat-num">10<span>+</span></div>
-    <div class="stat-label">Protocols shipped</div>
+    <div class="stat-label">Protocols in production</div>
   </div>
   <div class="stat">
-    <div class="stat-num">1      
+    <div class="stat-num">125K<span>+</span></div>
+    <div class="stat-label">
+      <a href="https://www.npmjs.com/package/solhint" target="_blank">Solhint weekly downloads ↗</a>
     </div>
-    <div class="stat-label">Open-source official maintainer<br>
-      <a href="https://www.npmjs.com/package/solhint" target="_blank">+100.000 weekly downloads ↗</a>
-    </div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2023<span>—</span></div>
+    <div class="stat-label">Official Solhint maintainer since</div>
   </div>
 </div>
 
+<!-- SOLHINT -->
+<section id="solhint">
+  <div class="section-tag">// open source</div>
+  <h2>Solhint — official maintainer</h2>
+  <div class="solhint-card">
+    <div>
+      <div class="solhint-title">Solhint</div>
+      <div class="solhint-sub">github.com/protofire/solhint</div>
+      <p class="solhint-desc">
+        The most widely adopted Solidity static-analysis tool in the ecosystem — MIT licensed, ~125K weekly npm downloads, 1.1k GitHub stars. As official maintainer I drive releases, rule design, bug triage and PR reviews, support plugin authors, and resolved outstanding VS Code extension integration issues. Solhint ships <strong>100+ built-in rules</strong>; I've <strong>authored 25+ of them since 2023</strong>, covering security patterns, gas optimization, and modern Solidity conventions. I also contributed to grant-funded proposals with the Ethereum Foundation and Optimism.
+      </p>
+      <div class="project-tags" style="margin-top: 1.25rem;">
+        <span class="tag tag-blue">Static Analysis</span>
+        <span class="tag tag-blue">Solidity</span>
+        <span class="tag tag-blue">Node.js</span>
+        <span class="tag tag-gray">Technical Lead</span>
+        <span class="tag tag-gray">Open Source</span>
+        <span class="tag tag-teal">Official Maintainer</span>
+      </div>
+      <div style="margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 1.25rem;">
+        <a href="https://github.com/protofire/solhint" target="_blank" class="code-accent">Repository ↗</a>
+        <a href="https://www.npmjs.com/package/solhint" target="_blank" class="code-accent">npm ↗</a>
+        <a href="https://github.com/protofire/solhint/releases" target="_blank" class="code-accent">Releases ↗</a>
+      </div>
+    </div>
+    <div class="solhint-metrics">
+      <div class="metric-box">
+        <div class="metric-val">125K+</div>
+        <div class="metric-label">Weekly npm downloads</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">1.1k</div>
+        <div class="metric-label">GitHub stars</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">25+</div>
+        <div class="metric-label">Rules authored since 2023</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">100+</div>
+        <div class="metric-label">Built-in rules total</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem;">Selected rules I authored — each links to its merged PR</div>
+    <div class="rules-grid">
+      <a href="https://github.com/protofire/solhint/pull/417" target="_blank" class="rule-link"><span class="rule-name">no-unused-import</span><span class="rule-pr">#417</span></a>
+      <a href="https://github.com/protofire/solhint/pull/468" target="_blank" class="rule-link"><span class="rule-name">func-named-parameters</span><span class="rule-pr">#468</span></a>
+      <a href="https://github.com/protofire/solhint/pull/475" target="_blank" class="rule-link"><span class="rule-name">Custom errors over require / revert</span><span class="rule-pr">#475</span></a>
+      <a href="https://github.com/protofire/solhint/pull/487" target="_blank" class="rule-link"><span class="rule-name">one-contract-per-file</span><span class="rule-pr">#487</span></a>
+      <a href="https://github.com/protofire/solhint/pull/543" target="_blank" class="rule-link"><span class="rule-name">Gas: indexed events</span><span class="rule-pr">#543</span></a>
+      <a href="https://github.com/protofire/solhint/pull/544" target="_blank" class="rule-link"><span class="rule-name">Gas: calldata parameters</span><span class="rule-pr">#544</span></a>
+      <a href="https://github.com/protofire/solhint/pull/546" target="_blank" class="rule-link"><span class="rule-name">Gas: struct packing</span><span class="rule-pr">#546</span></a>
+      <a href="https://github.com/protofire/solhint/pull/557" target="_blank" class="rule-link"><span class="rule-name">interface-starts-with-i</span><span class="rule-pr">#557</span></a>
+      <a href="https://github.com/protofire/solhint/pull/657" target="_blank" class="rule-link"><span class="rule-name">import-path-check</span><span class="rule-pr">#657</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
-<section id="about">
+<section id="about" style="padding-top: 0;">
   <div class="section-tag">// about</div>
   <h2>Architecting DeFi from the ground up</h2>
   <div class="about-grid">
     <div class="about-text">
       <p>
-        I design and build blockchain protocol architectures for production — not proofs of concept. My work spans <strong>institutional tokenization platforms (RWA)</strong>, <strong>ERC-4626</strong> staking vaults, <strong>oracles</strong> and data-feed systems, <strong>AMM integrations</strong>, governance contracts, and <strong>cross-chain bridges</strong>.
+        I design and build blockchain protocol architectures for production — not proofs of concept. Over <strong>7+ years in Web3</strong> (25+ in software overall) I've shipped <strong>10+ production systems</strong> across Ethereum, BNB Chain, Polygon, and MANTRA Chain: <strong>institutional tokenization platforms (RWA)</strong>, <strong>ERC-4626</strong> staking vaults and withdrawal flows, <strong>oracles</strong> and data-feed systems, <strong>AMM integrations</strong>, governance contracts, and <strong>cross-chain bridges</strong>.
       </p>
       <p>
-        I lead end-to-end delivery: translating ambiguous requirements into contract architecture, defining edge cases and protocol invariants, implementing with Solidity and Foundry/Hardhat, writing exhaustive fork tests, and staying accountable post-deployment. 
-      </p>        
-      <p>
-        I leverage a <strong>suite of AI models</strong> (Claude Code, Codex, Kimi, Grok, Gemini) as design partners during critical architectural phases. Rather than bypassing engineering rigor, I rely on them to stress-test technical trade-offs before implementation. Furthermore, <strong>AI agents</strong> and <strong>skills</strong> operate as my day-to-day coding and review assistants, ensuring robust test coverage and proactively catching edge cases.
+        I lead end-to-end delivery: translating ambiguous requirements into contract architecture, defining edge cases and protocol invariants, implementing with Solidity and Foundry/Hardhat, writing exhaustive fork tests, and staying accountable post-deployment — while remaining the senior technical reference for delivery teams of up to three additional engineers.
       </p>
       <p>
-        On the open-source side, I'm the official maintainer of <strong>Solhint</strong>, one of the most widely adopted Solidity linters. I drive releases, rule design, bug triage, and developer experience improvements across the ecosystem.
+        I use <strong>AI coding tools (Claude Code, Codex)</strong> as productivity assistants within a senior engineering workflow: architectural direction, protocol invariants, and final decisions are owned by the engineer. AI accelerates exploration, boilerplate, and test coverage — always validated deterministically through tests, static analysis, and CI.
       </p>
       <p style="color: var(--muted); font-size: 0.85rem;">Buenos Aires, Argentina (GMT-3) · Spanish native · English fluent</p>
     </div>
@@ -709,47 +788,6 @@
   </div>
 </section>
 
-<!-- SOLHINT -->
-<section id="solhint" style="padding-top: 0;">
-  <div class="section-tag">// open source</div>
-  <h2>Solhint — official maintainer</h2>
-  <div class="solhint-card">
-    <div>
-      <div class="solhint-title">Solhint</div>
-      <div class="solhint-sub">github.com/protofire/solhint</div>
-      <p class="solhint-desc">
-        The most widely adopted Solidity linter in the ecosystem. Used by smart contract teams at protocols large and small to enforce code quality, security patterns, and style rules. I lead releases, design new lint rules, triage bugs, review PRs, support plugin authors, and drive developer experience improvements. I also contributed to grant-related technical proposals linking static analysis with modern Solidity workflows.
-      </p>
-      <div class="project-tags" style="margin-top: 1.25rem;">
-        <span class="tag tag-blue">Static Analysis</span>
-        <span class="tag tag-blue">Solidity</span>
-        <span class="tag tag-blue">Node.js</span>
-        <span class="tag tag-gray">Technical Lead</span>
-        <span class="tag tag-gray">Open Source</span>
-        <span class="tag tag-teal">Official Maintainer</span>
-      </div>
-    </div>
-    <div class="solhint-metrics">
-      <div class="metric-box">
-        <div class="metric-val">∞</div>
-        <div class="metric-label">Teams using it</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-val">2023—</div>
-        <div class="metric-label">Maintainer since</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-val">100+</div>
-        <div class="metric-label">Lint rules</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-val">Active</div>
-        <div class="metric-label">Development</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PROJECTS -->
 <section id="projects" style="padding-top: 0;">
   <div class="section-tag">// projects</div>
@@ -757,16 +795,35 @@
   <div class="projects-list">
 
     <div class="project-card">
+      <div class="project-year">2026 — Present</div>
+      <div>
+        <div class="project-name">WADZ+</div>
+        <div class="project-role">Blockchain Architect & Protocol Developer</div>
+        <p class="project-desc">
+          Architecting and building a vault-wrapper protocol in the style of Morpho and Yearn, extended to dual-asset LP vaults with an internal referral system. Core contract suite — Factory, Wrapper, Authorizer, Registry, and supporting components — with full ownership across architecture, implementation, and testing.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Vault Wrapper</span>
+          <span class="tag tag-blue">Dual-asset LP</span>
+          <span class="tag tag-teal">Factory / Registry</span>
+          <span class="tag tag-gray">Morpho / Yearn style</span>
+          <span class="tag tag-gray">Referral System</span>
+        </div>
+      </div>
+      <div class="project-status status-live">Building</div>
+    </div>
+
+    <div class="project-card">
       <div class="project-year">2026</div>
       <div>
         <div class="project-name">DigiBlock</div>
         <div class="project-role">Blockchain Architect & Protocol Designer</div>
         <p class="project-desc">
-          Designing and implementing the blockchain layer for an institutional-grade tokenization platform (RWA): ERC-20 security-token architecture and supporting infrastructure. Responsible for smart contract architecture, token protocol design, and defining an upgrade path toward institutional compliance standards as the platform scales.
+          Designed and implemented the blockchain layer for an institutional-grade Real World Asset (RWA) tokenization platform: ERC-20 security-token architecture and supporting infrastructure. Owned smart contract architecture and token protocol design, and defined the upgrade path toward institutional compliance standards as the platform scaled. Lead architect for the on-chain layer within a small delivery team.
         </p>
         <div class="project-tags">
           <span class="tag tag-blue">Tokenization</span>
-          <span class="tag tag-blue">ERC-20</span>
+          <span class="tag tag-blue">ERC-20 Security Token</span>
           <span class="tag tag-gray">Architecture</span>
           <span class="tag tag-gray">Institutional</span>
         </div>
@@ -779,16 +836,17 @@
         <div class="project-name">Mantra Protocol</div>
         <div class="project-role">Smart Contract Architect & Developer</div>
         <p class="project-desc">
-          Designed and implemented core protocol components: Vault, Node Registry, and Withdrawal Manager. Integrated MANTRA staking precompiles with native wrapping and unwrapping flows. Deployed to mainnet and testnet with extensive TypeScript/Hardhat integration tests.
+          Designed and implemented the core protocol — <strong>StakingVault</strong> (issues the stMANTRA share token), <strong>DelegationManager</strong>, <strong>NodeOperatorRegistry</strong>, and <strong>WithdrawalManager</strong> — integrating MANTRA staking precompiles, with native OM wrapped to WETH on deposit. Deployed as upgradeable proxies to mainnet and testnet with extensive TypeScript/Hardhat integration tests. <a href="https://blockscout.mantrascan.io/address/0x4131a80b67BE287627766B858C3C6d7f9e900324" target="_blank">stMANTRA on mainnet ↗</a>
         </p>
         <div class="project-tags">
           <span class="tag tag-blue">ERC-4626 Vault</span>
           <span class="tag tag-blue">Staking Precompiles</span>
           <span class="tag tag-teal">Withdrawal Manager</span>
-          <span class="tag tag-gray">Hardhat</span>
-          <span class="tag tag-gray">TypeScript</span>
+          <span class="tag tag-gray">Upgradeable Proxies</span>
+          <span class="tag tag-gray">Hardhat / TS</span>
         </div>
       </div>
+      <div class="project-status status-mainnet">Mainnet</div>
     </div>
 
     <div class="project-card">
@@ -797,7 +855,7 @@
         <div class="project-name">Axon Protocol</div>
         <div class="project-role">Smart Contract Architect & Lead Developer</div>
         <p class="project-desc">
-          Designed the full protocol contract suite and associated subgraphs. Led extensive Hardhat and TypeScript testing covering protocol behavior and integration flows end to end.
+          Designed and implemented the full protocol contract suite and associated subgraphs. Led delivery with a small engineering team — owning technical direction, testing strategy, and integration flows — with extensive Hardhat and TypeScript integration testing covering protocol behavior end to end.
         </p>
         <div class="project-tags">
           <span class="tag tag-blue">Protocol Design</span>
@@ -831,12 +889,13 @@
         <div class="project-name">Lys Protocol</div>
         <div class="project-role">Lead Developer</div>
         <p class="project-desc">
-          Designed protocol architecture and implemented smart contracts with comprehensive testing across all critical paths.
+          Designed and implemented an <strong>EigenLayer restaking protocol</strong>: user deposits routed to liquid staking tokens across Lido, Frax, Kelp, Renzo, Swell, Stader, and EtherFi, then restaked through EigenLayer. Owned protocol architecture, smart contracts, and testing coverage.
         </p>
         <div class="project-tags">
-          <span class="tag tag-blue">Protocol Architecture</span>
-          <span class="tag tag-gray">Solidity</span>
-          <span class="tag tag-gray">Full Coverage Testing</span>
+          <span class="tag tag-blue">EigenLayer Restaking</span>
+          <span class="tag tag-blue">LST Routing</span>
+          <span class="tag tag-teal">Lido / Frax / EtherFi</span>
+          <span class="tag tag-gray">Protocol Architecture</span>
         </div>
       </div>
     </div>
@@ -855,6 +914,7 @@
           <span class="tag tag-gray">Redistribution Logic</span>
         </div>
       </div>
+      <div class="project-status status-mainnet">Mainnet</div>
     </div>
 
     <div class="project-card">
@@ -863,7 +923,7 @@
         <div class="project-name">Kryptomon — Chainlink CCIP</div>
         <div class="project-role">Smart Contract Developer</div>
         <p class="project-desc">
-          Designed and implemented sender and receiver contracts for cross-chain asset bridging via Chainlink CCIP. Covered NFTs, ERC-1155, and ERC-20 assets across multiple chains.
+          Designed sender and receiver contracts for cross-chain asset bridging via Chainlink CCIP. Implemented and tested flows for NFTs, ERC-1155, and ERC-20 assets across multiple chains.
         </p>
         <div class="project-tags">
           <span class="tag tag-blue">Chainlink CCIP</span>
@@ -880,11 +940,11 @@
         <div class="project-name">Roe Finance</div>
         <div class="project-role">Smart Contract Auditor</div>
         <p class="project-desc">
-          Performed DeFi smart contract security audits: code review, dependency assessment, standards compliance checks, gas evaluation, and written reporting for the protocol team.
+          Audited 9 DeFi smart contracts: code review, dependency assessment, standards compliance, gas evaluation, and formal written reporting. Identified <strong>5 high-severity findings and 0 critical</strong>, delivered with remediation guidance.
         </p>
         <div class="project-tags">
           <span class="tag tag-blue">Security Audit</span>
-          <span class="tag tag-gray">DeFi</span>
+          <span class="tag tag-teal">9 contracts · 5 high · 0 critical</span>
           <span class="tag tag-gray">Gas Analysis</span>
           <span class="tag tag-gray">Standards Review</span>
         </div>
@@ -897,61 +957,90 @@
         <div class="project-name">Swarm</div>
         <div class="project-role">Smart Contract Designer, Developer & Web3 Integrator</div>
         <p class="project-desc">
-          Full lifecycle: requirements analysis, smart contract architecture, implementation, deployment, and documentation. Used OpenZeppelin, Chainlink, NFT standards, Gnosis Safe, multisig patterns, and automated JS/TS testing.
+          Designed and built <strong>AssetToken</strong> — a wrapped-asset structure (Wrapped-BTC-style) giving on-chain representation of real-world underlying assets, aligned with Swarm's institutional RWA compliance model — and <strong>ActionManager</strong>, orchestrating standardized weighted-pool creation, multi-token transfers, swap-fee configuration, and per-token weights. Deployed the open-dotc protocol contracts to BNB Chain. Full lifecycle with OpenZeppelin, Chainlink, Gnosis Safe, and multisig patterns.
         </p>
         <div class="project-tags">
-          <span class="tag tag-blue">OpenZeppelin</span>
-          <span class="tag tag-blue">Chainlink</span>
+          <span class="tag tag-blue">AssetToken (RWA)</span>
+          <span class="tag tag-blue">ActionManager</span>
+          <span class="tag tag-teal">open-dotc · BNB Chain</span>
           <span class="tag tag-teal">Gnosis Safe</span>
-          <span class="tag tag-teal">Multisig</span>
-          <span class="tag tag-gray">NFT</span>
+          <span class="tag tag-gray">OpenZeppelin</span>
         </div>
       </div>
+      <div class="project-status status-live">Live</div>
     </div>
 
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" style="padding-top: 0;">
-  <div class="section-tag">// skills</div>
-  <h2>Technical stack</h2>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-title">Protocol Architecture</div>
-      <ul class="skill-list">
-        <li>ERC-4626 Vaults & Withdrawal Flows & Strategies</li>
-        <li>Tokenization Platforms (RWA)</li>
-        <li>Oracle / Data Feed Systems</li>
-        <li>AMM Integrations (Uniswap, Balancer)</li>
-        <li>Governance & DAO Voting</li>
-        <li>Upgradeable Proxies (UUPS / Transparent / Beacon)</li>
-        <li>Escrow & Multisig Treasury</li>
-      </ul>
+<!-- CASE STUDY -->
+<section id="case-study" style="padding-top: 0;">
+  <div class="section-tag">// case study</div>
+  <h2>MANTRA Withdrawal Manager</h2>
+  <div class="solhint-card" style="align-items: start;">
+    <div>
+      <div class="solhint-title">Liquid staking with a safe unbonding path</div>
+      <div class="solhint-sub">MANTRA mainnet · StakingVault · DelegationManager · NodeOperatorRegistry · WithdrawalManager</div>
+
+      <p class="solhint-desc" style="margin-bottom: 1rem;">
+        <strong style="color: var(--accent2);">Problem.</strong> Staking on MANTRA Chain runs through native staking precompiles with a protocol-enforced unbonding delay. A user-facing vault has to offer a clean deposit/withdraw experience on top of an asset that is not instantly liquid — funds are locked while unbonding, and withdrawals must be honored fairly and without stranding value.
+      </p>
+      <p class="solhint-desc" style="margin-bottom: 1rem;">
+        <strong style="color: var(--accent2);">Approach.</strong> An ERC-4626 <strong>StakingVault</strong> whose underlying <code style="font-family: var(--mono);">asset()</code> is wrapped native (WETH), issuing <strong>stMANTRA</strong> shares. It accepts native OM through a payable <code style="font-family: var(--mono);">receive()</code> — wrapping it to WETH — or WETH directly via <code style="font-family: var(--mono);">deposit()</code>, minting shares and adding the stake to a pending queue. A <strong>DelegationManager</strong> routes pending stake to the validator set tracked by a <strong>NodeOperatorRegistry</strong>. A dedicated <strong>WithdrawalManager</strong> isolates the hard part: it queues withdrawal requests, initiates unbonding against the precompile, and lets users claim once the unbonding window clears — keeping exit accounting off the vault's hot path.
+      </p>
+      <div style="font-family: var(--mono); font-size: 0.8rem; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.65rem 0.9rem; margin-bottom: 1rem; overflow-x: auto;">receive() external payable; <span style="color: var(--accent2);">// wrap native OM → WETH, mint stMANTRA</span></div>
+      <p class="solhint-desc" style="margin-bottom: 1rem;">
+        <strong style="color: var(--accent2);">Trade-offs.</strong> Splitting the WithdrawalManager and DelegationManager out of the vault adds contracts and cross-contract calls, but keeps deposit/withdraw logic auditable and confines unbonding-state complexity to one place. Native wrapping/unwrapping avoids a separate wrapper token and its trust assumptions, at the cost of tight coupling to precompile semantics — covered with extensive integration tests. All contracts ship behind upgradeable proxies to leave room for the staking model to evolve.
+      </p>
+      <p class="solhint-desc">
+        <strong style="color: var(--accent2);">Outcome.</strong> All four contracts deployed as upgradeable proxies to MANTRA mainnet and testnet, with an end-to-end TypeScript/Hardhat suite exercising the full deposit → delegate → unbond → claim lifecycle and its edge cases.
+      </p>
+
+      <div class="project-tags" style="margin-top: 1.5rem;">
+        <span class="tag tag-blue">ERC-4626</span>
+        <span class="tag tag-blue">Staking Precompiles</span>
+        <span class="tag tag-teal">Withdrawal Queue</span>
+        <span class="tag tag-teal">Unbonding</span>
+        <span class="tag tag-gray">Hardhat / TS</span>
+      </div>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Smart Contract Engineering</div>
-      <ul class="skill-list">
-        <li>Solidity (advanced)</li>
-        <li>OpenZeppelin</li>
-        <li>Foundry (fork testing, invariants)</li>
-        <li>Hardhat + TypeScript</li>
-        <li>Ethers.js</li>
-        <li>CI Workflows & Deployment Scripts</li>
-        <li>Subgraphs / The Graph</li>
-      </ul>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Ecosystem & Cross-chain</div>
-      <ul class="skill-list">
-        <li>Chainlink (CCIP, Oracles)</li>
-        <li>EtherFi / Lido</li>
-        <li>Frax / Uniswap / Balancer</li>
-        <li>Gnosis Safe</li>
-        <li>Solhint (maintainer)</li>
-        <li>Static Analysis & Custom Lint Rules</li>
-        <li>Rust / Anchor (Solana, exposure)</li>
-      </ul>
+
+    <div>
+      <div style="font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem;">Deposit → claim flow</div>
+      <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+        <div class="metric-box" style="padding: 0.85rem 1.1rem;">
+          <div style="font-family: var(--mono); font-size: 0.9rem; color: var(--text);">User deposit</div>
+          <div class="metric-label" style="margin-top: 0.15rem;">native OM via receive() · or WETH via deposit()</div>
+        </div>
+        <div style="text-align: center; color: var(--accent); font-family: var(--mono); font-size: 0.9rem;">↓</div>
+        <div class="metric-box" style="padding: 0.85rem 1.1rem;">
+          <div style="font-family: var(--mono); font-size: 0.9rem; color: var(--text);">StakingVault</div>
+          <div class="metric-label" style="margin-top: 0.15rem;">asset() = WETH · mints stMANTRA shares</div>
+        </div>
+        <div style="text-align: center; color: var(--accent); font-family: var(--mono); font-size: 0.9rem;">↓</div>
+        <div class="metric-box" style="padding: 0.85rem 1.1rem;">
+          <div style="font-family: var(--mono); font-size: 0.9rem; color: var(--text);">DelegationManager</div>
+          <div class="metric-label" style="margin-top: 0.15rem;">delegates via staking precompile</div>
+        </div>
+        <div style="text-align: center; color: var(--accent); font-family: var(--mono); font-size: 0.9rem;">↓</div>
+        <div class="metric-box" style="padding: 0.85rem 1.1rem;">
+          <div style="font-family: var(--mono); font-size: 0.9rem; color: var(--text);">NodeOperatorRegistry</div>
+          <div class="metric-label" style="margin-top: 0.15rem;">validator set &amp; delegation targets</div>
+        </div>
+        <div style="text-align: center; color: var(--accent2); font-family: var(--mono); font-size: 0.9rem;">↓</div>
+        <div class="metric-box" style="padding: 0.85rem 1.1rem; border-color: var(--border-accent);">
+          <div style="font-family: var(--mono); font-size: 0.9rem; color: var(--accent2);">WithdrawalManager</div>
+          <div class="metric-label" style="margin-top: 0.15rem;">queue → unbond → claim after window</div>
+        </div>
+      </div>
+
+      <div style="font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin: 1.75rem 0 0.75rem;">Deployed · MANTRA mainnet</div>
+      <div style="display: flex; flex-direction: column; gap: 0.45rem; font-family: var(--mono); font-size: 0.74rem;">
+        <a href="https://blockscout.mantrascan.io/address/0x4131a80b67BE287627766B858C3C6d7f9e900324" target="_blank">StakingVault · 0x4131…0324 ↗</a>
+        <a href="https://blockscout.mantrascan.io/address/0x599547680f47D8596119452E4d44Ff6659B7Bf0D" target="_blank">WithdrawalManager · 0x5995…Bf0D ↗</a>
+        <a href="https://blockscout.mantrascan.io/address/0xCB24143ACd5C64E05674a82bE3f014Ba772Deb73" target="_blank">NodeOperatorRegistry · 0xCB24…Deb73 ↗</a>
+        <a href="https://blockscout.mantrascan.io/address/0x17Fe797082FA229789c9197FE10fD205540cAbDD" target="_blank">DelegationManager · 0x17Fe…cAbDD ↗</a>
+      </div>
     </div>
   </div>
 </section>
@@ -999,7 +1088,7 @@
     <div>
       <h2 style="margin-bottom: 1rem;">Let's build something production-grade.</h2>
       <p class="contact-sub">
-        Open to protocol architecture work, smart contract development, technical audits, and Solhint integrations. GMT-3, async-friendly, English and Spanish.
+        I work on protocol architecture, smart contract development, security audits, and Solhint integrations. Always happy to talk through a hard on-chain problem. GMT-3, async-friendly, English and Spanish.
       </p>
     </div>
     <div class="contact-links">
@@ -1025,7 +1114,7 @@
 
 <footer>
   <div class="footer-copy">© 2026 Diego Bale · Buenos Aires, Argentina</div>
-  <div class="footer-copy">Blockchain Protocol Architect · Solhint Maintainer</div>
+  <div class="footer-copy">Blockchain Protocol Architect · Smart Contract Developer · Solhint Maintainer</div>
 </footer>
 
 </body>

@@ -1,0 +1,5 @@
+# custom folders
+_tmp/
+.claude/
+node_modules/
+
