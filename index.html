@@ -334,26 +334,12 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .status-live {
-    background: rgba(79,209,197,0.1);
-    color: var(--accent2);
-    border: 1px solid rgba(79,209,197,0.25);
-  }
-  .status-live::before {
-    content: '';
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent2);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  .status-mainnet {
+  .status-network {
     background: rgba(99,179,237,0.1);
     color: var(--accent);
     border: 1px solid rgba(99,179,237,0.25);
   }
-  .status-mainnet::before {
+  .status-network::before {
     content: '';
     display: inline-block;
     width: 5px;
@@ -361,11 +347,6 @@
     border-radius: 50%;
     background: var(--accent);
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
   /* SOLHINT FEATURE */
   .solhint-card {
     background: linear-gradient(135deg, #0f1820 0%, #0a1520 100%);
@@ -813,7 +794,7 @@
           <span class="tag tag-gray">Rewards / Referrals</span>
         </div>
       </div>
-      <div class="project-status status-mainnet">Mainnet</div>
+      <div class="project-status status-network">Ethereum</div>
     </div>
 
     <div class="project-card">
@@ -849,7 +830,7 @@
           <span class="tag tag-gray">Hardhat / TS</span>
         </div>
       </div>
-      <div class="project-status status-mainnet">Mainnet</div>
+      <div class="project-status status-network">MANTRA Chain</div>
     </div>
 
     <div class="project-card">
@@ -917,7 +898,7 @@
           <span class="tag tag-gray">Redistribution Logic</span>
         </div>
       </div>
-      <div class="project-status status-mainnet">Mainnet</div>
+      <div class="project-status status-network">Arbitrum</div>
     </div>
 
     <div class="project-card">
@@ -970,7 +951,7 @@
           <span class="tag tag-gray">OpenZeppelin</span>
         </div>
       </div>
-      <div class="project-status status-live">Live</div>
+      <div class="project-status status-network">BNB Chain</div>
     </div>
 
   </div>
