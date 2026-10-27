@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diego Bale — Blockchain Protocol Architect</title>
+<meta name="description" content="Diego Bale — Senior Smart Contract Engineer, Solhint maintainer, and architect of production DeFi, RWA, vault, and liquid-staking protocols.">
+<title>Diego Bale — Senior Smart Contract Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -653,13 +654,13 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">Blockchain Protocol Architect · Smart Contract Developer · Solhint Maintainer</div>
+    <div class="hero-tag">Senior Smart Contract Engineer · Protocol Architect · Solhint Maintainer</div>
     <h1>
       Diego Bale<br>
-      <span class="h1-dim">Protocol Architect</span>
+      <span class="h1-dim">Smart Contract Engineer</span>
     </h1>
     <p class="hero-sub">
-      Senior blockchain engineer with 25+ years in software and 7+ years building production-grade Web3 protocols — from institutional tokenization platforms to ERC-4626 vaults, cross-chain integrations, and the tooling that keeps Solidity codebases clean.
+      Senior blockchain engineer with 25+ years in software and 7+ years building production-grade Web3 protocols — including MANTRA Chain’s canonical stMANTRA liquid-staking system, institutional tokenization platforms, ERC-4626 vaults, cross-chain integrations, and the tooling that keeps Solidity codebases clean.
     </p>
     <div class="hero-links">
       <a href="https://github.com/dbale-arg" target="_blank" class="btn btn-primary">GitHub</a>
@@ -762,10 +763,10 @@
         I design and build blockchain protocol architectures for production — not proofs of concept. Over <strong>7+ years in Web3</strong> (25+ in software overall) I've shipped <strong>10+ production systems</strong> across Ethereum, BNB Chain, Polygon, and MANTRA Chain: <strong>institutional tokenization platforms (RWA)</strong>, <strong>ERC-4626</strong> staking vaults and withdrawal flows, <strong>oracles</strong> and data-feed systems, <strong>AMM integrations</strong>, governance contracts, and <strong>cross-chain bridges</strong>.
       </p>
       <p>
-        I lead end-to-end delivery: translating ambiguous requirements into contract architecture, defining edge cases and protocol invariants, implementing with Solidity and Foundry/Hardhat, writing exhaustive fork tests, and staying accountable post-deployment — while remaining the senior technical reference for delivery teams of up to three additional engineers.
+        I lead end-to-end delivery: translating ambiguous requirements into contract architecture, defining edge cases and protocol invariants, implementing with Solidity and Foundry/Hardhat, and staying accountable post-deployment. Threat-oriented reviews, static analysis, Foundry invariant and fork testing, and CI checks are part of the release process — while I remain the senior technical reference for delivery teams of up to three additional engineers.
       </p>
       <p>
-        I use <strong>AI coding tools (Claude Code, Codex)</strong> as productivity assistants within a senior engineering workflow: architectural direction, protocol invariants, and final decisions are owned by the engineer. AI accelerates exploration, boilerplate, and test coverage — always validated deterministically through tests, static analysis, and CI.
+        I use <strong>AI-assisted engineering workflows</strong> — Codex, Claude Code, MCP servers, agent delegation, and reusable Skills — to accelerate exploration, implementation, and test coverage. Architectural direction, protocol invariants, and final decisions remain engineer-owned, with generated output validated independently through deterministic tests, static analysis, and CI.
       </p>
       <p style="color: var(--muted); font-size: 0.85rem;">Buenos Aires, Argentina (GMT-3) · Spanish native · English fluent</p>
     </div>
@@ -783,6 +784,8 @@
         <div class="exp-pill"><span class="exp-dot"></span>OpenZeppelin</div>
         <div class="exp-pill"><span class="exp-dot teal"></span>Subgraphs / Indexers</div>
         <div class="exp-pill"><span class="exp-dot teal"></span>Static Analysis</div>
+        <div class="exp-pill"><span class="exp-dot"></span>Invariant / Fork Testing</div>
+        <div class="exp-pill"><span class="exp-dot"></span>Multisig</div>
       </div>
     </div>
   </div>
@@ -795,22 +798,22 @@
   <div class="projects-list">
 
     <div class="project-card">
-      <div class="project-year">2026 — Present</div>
+      <div class="project-year">2026</div>
       <div>
         <div class="project-name">WADZ+</div>
         <div class="project-role">Blockchain Architect & Protocol Developer</div>
         <p class="project-desc">
-          Architecting and building a vault-wrapper protocol in the style of Morpho and Yearn, extended to dual-asset LP vaults with an internal referral system. Core contract suite — Factory, Wrapper, Authorizer, Registry, and supporting components — with full ownership across architecture, implementation, and testing.
+          Designed and implemented a vault-wrapper protocol supporting single-asset and dual-asset LP strategies, with Factory, Registry, authorization, rewards, referral integration, and Chainlink valuation oracles. Owned the smart contract architecture, implementation, and automated testing. The core protocol and an active single-asset wrapper are deployed to Ethereum Mainnet; dual-asset deployment infrastructure is implemented. <a href="https://etherscan.io/address/0xF4AB3514cb05dd280aE10237d46bDFe5EfC2B2d1#code" target="_blank">WadzVaultFactory on Etherscan ↗</a>
         </p>
         <div class="project-tags">
-          <span class="tag tag-blue">Vault Wrapper</span>
+          <span class="tag tag-blue">Single-asset Vault</span>
           <span class="tag tag-blue">Dual-asset LP</span>
           <span class="tag tag-teal">Factory / Registry</span>
-          <span class="tag tag-gray">Morpho / Yearn style</span>
-          <span class="tag tag-gray">Referral System</span>
+          <span class="tag tag-teal">Chainlink Oracles</span>
+          <span class="tag tag-gray">Rewards / Referrals</span>
         </div>
       </div>
-      <div class="project-status status-live">Building</div>
+      <div class="project-status status-mainnet">Mainnet</div>
     </div>
 
     <div class="project-card">
@@ -833,10 +836,10 @@
     <div class="project-card">
       <div class="project-year">2025–26</div>
       <div>
-        <div class="project-name">Mantra Protocol</div>
+        <div class="project-name">MANTRA — stMANTRA Liquid Staking</div>
         <div class="project-role">Smart Contract Architect & Developer</div>
         <p class="project-desc">
-          Designed and implemented the core protocol — <strong>StakingVault</strong> (issues the stMANTRA share token), <strong>DelegationManager</strong>, <strong>NodeOperatorRegistry</strong>, and <strong>WithdrawalManager</strong> — integrating MANTRA staking precompiles, with native OM wrapped to WETH on deposit. Deployed as upgradeable proxies to mainnet and testnet with extensive TypeScript/Hardhat integration tests. <a href="https://blockscout.mantrascan.io/address/0x4131a80b67BE287627766B858C3C6d7f9e900324" target="_blank">stMANTRA on mainnet ↗</a>
+          Designed and implemented the <strong>canonical stMANTRA liquid-staking protocol for MANTRA Chain</strong> — <strong>StakingVault</strong> (the official canonical stMANTRA contract), <strong>DelegationManager</strong>, <strong>NodeOperatorRegistry</strong>, and <strong>WithdrawalManager</strong>. The system integrates MANTRA staking precompiles and wraps native OM to WETH on deposit. Deployed as upgradeable proxies to mainnet and testnet with extensive TypeScript/Hardhat integration tests. <a href="https://docs.mantrachain.io/resources/canonical-token-contracts" target="_blank">MANTRA canonical contracts ↗</a> · <a href="https://blockscout.mantrascan.io/address/0x4131a80b67BE287627766B858C3C6d7f9e900324" target="_blank">stMANTRA on mainnet ↗</a>
         </p>
         <div class="project-tags">
           <span class="tag tag-blue">ERC-4626 Vault</span>
@@ -976,14 +979,14 @@
 <!-- CASE STUDY -->
 <section id="case-study" style="padding-top: 0;">
   <div class="section-tag">// case study</div>
-  <h2>MANTRA Withdrawal Manager</h2>
+  <h2>MANTRA’s canonical stMANTRA liquid staking</h2>
   <div class="solhint-card" style="align-items: start;">
     <div>
-      <div class="solhint-title">Liquid staking with a safe unbonding path</div>
+      <div class="solhint-title">The official stMANTRA system, with a safe unbonding path</div>
       <div class="solhint-sub">MANTRA mainnet · StakingVault · DelegationManager · NodeOperatorRegistry · WithdrawalManager</div>
 
       <p class="solhint-desc" style="margin-bottom: 1rem;">
-        <strong style="color: var(--accent2);">Problem.</strong> Staking on MANTRA Chain runs through native staking precompiles with a protocol-enforced unbonding delay. A user-facing vault has to offer a clean deposit/withdraw experience on top of an asset that is not instantly liquid — funds are locked while unbonding, and withdrawals must be honored fairly and without stranding value.
+        <strong style="color: var(--accent2);">Problem.</strong> MANTRA needed its canonical stMANTRA liquid-staking system to offer a clean deposit/withdraw experience on top of native staking precompiles and their protocol-enforced unbonding delay. Funds are locked while unbonding, so withdrawals must be honored fairly and without stranding value.
       </p>
       <p class="solhint-desc" style="margin-bottom: 1rem;">
         <strong style="color: var(--accent2);">Approach.</strong> An ERC-4626 <strong>StakingVault</strong> whose underlying <code style="font-family: var(--mono);">asset()</code> is wrapped native (WETH), issuing <strong>stMANTRA</strong> shares. It accepts native OM through a payable <code style="font-family: var(--mono);">receive()</code> — wrapping it to WETH — or WETH directly via <code style="font-family: var(--mono);">deposit()</code>, minting shares and adding the stake to a pending queue. A <strong>DelegationManager</strong> routes pending stake to the validator set tracked by a <strong>NodeOperatorRegistry</strong>. A dedicated <strong>WithdrawalManager</strong> isolates the hard part: it queues withdrawal requests, initiates unbonding against the precompile, and lets users claim once the unbonding window clears — keeping exit accounting off the vault's hot path.
@@ -993,7 +996,7 @@
         <strong style="color: var(--accent2);">Trade-offs.</strong> Splitting the WithdrawalManager and DelegationManager out of the vault adds contracts and cross-contract calls, but keeps deposit/withdraw logic auditable and confines unbonding-state complexity to one place. Native wrapping/unwrapping avoids a separate wrapper token and its trust assumptions, at the cost of tight coupling to precompile semantics — covered with extensive integration tests. All contracts ship behind upgradeable proxies to leave room for the staking model to evolve.
       </p>
       <p class="solhint-desc">
-        <strong style="color: var(--accent2);">Outcome.</strong> All four contracts deployed as upgradeable proxies to MANTRA mainnet and testnet, with an end-to-end TypeScript/Hardhat suite exercising the full deposit → delegate → unbond → claim lifecycle and its edge cases.
+        <strong style="color: var(--accent2);">Outcome.</strong> All four contracts deployed as upgradeable proxies to MANTRA mainnet and testnet. The StakingVault is MANTRA Chain’s canonical stMANTRA contract, backed by an end-to-end TypeScript/Hardhat suite exercising the full deposit → delegate → unbond → claim lifecycle and its edge cases.
       </p>
 
       <div class="project-tags" style="margin-top: 1.5rem;">
@@ -1054,8 +1057,8 @@
       <div class="tl-dot"></div>
       <div class="tl-period">2021 — Present</div>
       <div class="tl-company">Protofire</div>
-      <div class="tl-role">Blockchain Protocol Architect · Solhint Maintainer</div>
-      <div class="tl-desc">Multi-project environment across 10+ protocols. Simultaneously lead Solhint as official maintainer while architecting and delivering production smart contract systems for DeFi, RWA, and NFT protocols.</div>
+      <div class="tl-role">Senior Smart Contract Engineer · Protocol Architect · Solhint Maintainer</div>
+      <div class="tl-desc">Multi-project environment across 10+ protocols. Simultaneously lead Solhint as official maintainer while architecting and delivering production smart contract systems for DeFi, RWA, and NFT protocols, including MANTRA Chain’s canonical stMANTRA liquid-staking system.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
@@ -1114,7 +1117,7 @@
 
 <footer>
   <div class="footer-copy">© 2026 Diego Bale · Buenos Aires, Argentina</div>
-  <div class="footer-copy">Blockchain Protocol Architect · Smart Contract Developer · Solhint Maintainer</div>
+  <div class="footer-copy">Senior Smart Contract Engineer · Protocol Architect · Solhint Maintainer</div>
 </footer>
 
 </body>
